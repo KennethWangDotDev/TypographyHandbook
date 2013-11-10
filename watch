@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+stylus -u jeet -w css -c
