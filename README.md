@@ -1,4 +1,4 @@
 boy
 ===
 
-A Jeet-friendly lightweight, modern, HTML5 Boilerplate fork with conditionally loaded polyfills for amazing browser support back to IE7
+A lightweight, up-to-date, version of HTML5 Boilerplate with conditionally loaded polyfills for amazing CSS3 support back to IE7.
