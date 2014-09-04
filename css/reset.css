@@ -43,16 +43,14 @@ iframe {
 }
 .browsehappy {
   width: 100%;
-  padding: 15px 0;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  background: #222;
+  color: #fff;
 }
 .browsehappy p {
   text-align: center;
 }
-.browsehappy p:last-of-type {
-  margin-bottom: 0;
-}
 .browsehappy a {
-  color: #5eccf7;
+  color: #fff;
+  font-weight: bold;
 }
