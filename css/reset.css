@@ -25,10 +25,12 @@ body:after,
   margin: 0;
   padding: 0;
 }
-body {
-  width: 100%;
+html {
   overflow-y: scroll;
   overflow-x: hidden;
+}
+body {
+  width: 100%;
 }
 img,
 video,
@@ -42,13 +44,17 @@ iframe {
 .browsehappy {
   width: 100%;
   padding: 15px;
-  background: #222;
+  background: #333;
   color: #fff;
-}
-.browsehappy p {
+  font-size: 13px;
+  line-height: 21px;
+  cursor: pointer;
   text-align: center;
 }
 .browsehappy a {
   color: #fff;
   font-weight: bold;
+}
+.browsehappy a:hover {
+  text-decoration: none;
 }
