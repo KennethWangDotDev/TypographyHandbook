@@ -7,11 +7,11 @@ A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded
 
 ## Features
 - [HTML5 Boilerplate](https://html5boilerplate.com/)
-- [Selectivizr](http://selectivizr.com/) for IE6-8 CSS3 selectors
 - [Modernizr](http://modernizr.com/)
-- [Respond](https://github.com/scottjehl/Respond) for IE6-8 media queries
+- Conditionally loaded [Selectivizr](http://selectivizr.com/) for IE6-8 CSS3 selectors
+- Conditionally loaded [Respond](https://github.com/scottjehl/Respond) for IE6-8 media queries
 - Conditionally loaded CDN and local jQuery
-- Generic reset:
+- Reset:
   - [Normalize.css](https://necolas.github.io/normalize.css/)
   - Helper [clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) class (`.cf`)
   - `box-sizing` [polyfill](https://github.com/Schepp/box-sizing-polyfill) for IE6-7 applied to all elements IE7 and below
