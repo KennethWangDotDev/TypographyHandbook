@@ -1,4 +1,6 @@
-# Boy
+<p align="center">
+  <img src="http://corysimmons.github.io/boy/boy-logo.svg">
+</p>
 
 A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded polyfills and a nice general reset for amazing CSS3 support back to IE6.
 
