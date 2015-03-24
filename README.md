@@ -5,7 +5,7 @@
 A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded polyfills and a nice general reset for amazing CSS3 support back to IE6.
 
 
-### Features
+## Features
 - [HTML5 Boilerplate](https://html5boilerplate.com/)
 - [Selectivizr](http://selectivizr.com/) for IE6-8 CSS3 selectors
 - [Modernizr](http://modernizr.com/)
@@ -20,3 +20,11 @@ A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded
   - Force vertical scrollbar to prevent [page bounce](https://css-tricks.com/eliminate-jumps-in-horizontal-centering-by-forcing-a-scroll-bar/)
   - `max-width: 100%` to make a plethora of [HTML elements](https://github.com/corysimmons/boy/blob/master/css/reset.css#L35) responsive [by default](http://unstoppablerobotninja.com/entry/fluid-images/)
   - Generic styling for IE9 and below browser warning
+
+
+## Installation (optional)
+You can easily grab a zip of this, or clone it, every time you want to create a new project. Or you can make use of the command line tool, [boy-npm](https://github.com/corysimmons/boy-npm), to quickly create Boy projects on-the-fly.
+
+- `npm install -g boy`
+- `boy foo` to install to the `foo` directory
+- `boy .` to install to the current directory
