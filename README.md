@@ -28,3 +28,10 @@ You can easily grab a zip of this, or clone it, every time you want to create a 
 - `npm install -g boy`
 - `boy foo` to install to the `foo` directory
 - `boy .` to install to the current directory
+
+
+### Other Projects
+If you like this project then I encourage you to check out a few of my other projects that go great with Boy.
+
+- [Lost Grid](https://github.com/corysimmons/lost) - Quite simply the best grid out there in every comparison available. Simple yet incredibly powerful.
+- [Typographic](https://github.com/corysimmons/typographic) - Insanely powerful yet easy-to-use responsive typography. Includes vertical rhythm, font stacks, modular scale, and more.
