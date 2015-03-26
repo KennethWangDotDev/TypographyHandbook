@@ -25,6 +25,9 @@ body:after,
   margin: 0;
   padding: 0;
 }
+h1, figure, fieldset {
+  margin: 0;
+}
 html {
   overflow-y: scroll;
   overflow-x: hidden;
