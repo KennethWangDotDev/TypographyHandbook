@@ -17,9 +17,7 @@ body:after,
 }
 *,
 *:before,
-*:after,
-*::before,
-*::after {
+*:after {
   *behavior: url("js/vendor/boxsizing.htc");
   box-sizing: border-box;
   margin: 0;
