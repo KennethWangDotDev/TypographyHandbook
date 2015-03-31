@@ -10,6 +10,7 @@ A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded
 - [Modernizr](http://modernizr.com/)
 - Conditionally loaded [Selectivizr](http://selectivizr.com/) for IE6-8 CSS3 selectors
 - Conditionally loaded [Respond](https://github.com/scottjehl/Respond) for IE6-8 media queries
+- Conditionally loaded [calc() Polyfill](https://github.com/closingtag/calc-polyfill) for IE8 `calc()` usage
 - Conditionally loaded CDN and local jQuery
 - Reset:
   - [Normalize.css](https://necolas.github.io/normalize.css/)
