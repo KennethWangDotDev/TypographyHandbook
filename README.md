@@ -1,11 +1,9 @@
-<p align="center">
-  <img src="http://corysimmons.github.io/boy/boy-logo.svg">
-</p>
+My personal starter kit that I use for my front-end web projects. This starter kit combines a lightweight HTML5 Boilerplate with a Sass boilerplate. It also features a Gulp file to assist with workflow.
 
-A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded polyfills and a nice general reset for amazing CSS3 support back to IE6.
+## Boy
 
+[Boy](https://github.com/corysimmons/boy) is a lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded polyfills and a nice general reset for amazing CSS3 support back to IE6.
 
-## Features
 - [HTML5 Boilerplate](https://html5boilerplate.com/)
 - [Modernizr](http://modernizr.com/)
 - Conditionally loaded [Selectivizr](http://selectivizr.com/) for IE6-8 CSS3 selectors
@@ -23,16 +21,27 @@ A lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded
   - Generic styling for IE9 and below browser warning
 
 
-## Installation (optional)
-You can easily grab a zip of this, or clone it, every time you want to create a new project. Or you can make use of the command line tool, [boy-npm](https://github.com/corysimmons/boy-npm), to quickly create Boy projects on-the-fly.
+## Sass Boilerplate
 
-- `npm install -g boy`
-- `boy foo` to install to the `foo` directory
-- `boy .` to install to the current directory
+[Sass Boilerplate](https://github.com/HugoGiraudel/sass-boilerplate) uses the 7-1 architecture pattern and sticks to the Sass Guidelines writing conventions.
+
+Each Sass stylesheets folder has its own README.md file to explain the purpose and add extra information. Be sure to browse the repository to see how it works.
 
 
-### Other Projects
-If you like this project then I encourage you to check out a few of my other projects that go great with Boy.
+## Gulp
 
-- [Lost Grid](https://github.com/corysimmons/lost) - Quite simply the best grid out there in every comparison available. Simple yet incredibly powerful.
-- [Typographic](https://github.com/corysimmons/typographic) - Insanely powerful yet easy-to-use responsive typography. Includes vertical rhythm, font stacks, modular scale, and more.
+This Gulpfile was designed to be lightweight, and only contains essentials.
+
+```bash
+git clone https://github.com/kennethwang14/KennethStarterKit KennethStarterKit
+cd KennethStarterKit
+npm install
+npm run gulp
+```
+
+What it does:
+-  Automatically compiles and minifies Sass
+    -  Autoprefixer support
+- Minifies JS
+- Compresses images with image-min and pngquant
+- BrowserSync for automatically refreshing pages, and synced browsers across all devices
