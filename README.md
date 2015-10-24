@@ -27,7 +27,6 @@ My personal starter kit that I use for my front-end web projects. This starter k
 
 Each Sass stylesheets folder has its own README.md file to explain the purpose and add extra information. Be sure to browse the repository to see how it works.
 
-
 ## Gulp
 
 This Gulpfile was designed to be lightweight, and only contains essentials.
@@ -43,5 +42,7 @@ What it does:
 -  Automatically compiles and minifies Sass
     -  Autoprefixer support
 - Minifies JS
+- SourceMap support for CSS and JS changes
 - Compresses images with image-min and pngquant
 - BrowserSync for automatically refreshing pages, and synced browsers across all devices
+- [Lost Grid](https://github.com/corysimmons/lost) via PostCSS

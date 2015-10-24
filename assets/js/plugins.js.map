@@ -1,0 +1,1 @@
+{"version":3,"sources":["plugins.js"],"names":["$","click","this","slideUp"],"mappings":"AAEAA,EAAE,WACAA,EAAE,gBAAgBC,MAAM,WACtBD,EAAEE,MAAMC","file":"plugins.js","sourcesContent":["// http://unheap.com\n\n$(function() {\n  $('.browsehappy').click(function() {\n    $(this).slideUp();\n  });\n});\n"],"sourceRoot":"/source/"}

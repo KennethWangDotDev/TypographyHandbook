@@ -1,17 +1,20 @@
 {
   "name": "kenneth-default-gulp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compresses JS, compiles Sass, BrowserSync support, Autoprefixes, and also imagemin on the side.",
   "main": "gulpfile.js",
   "devDependencies": {
-    "gulp-autoprefixer": "^3.1.0",
     "browser-sync": "^2.9.11",
     "gulp": "^3.9.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-sass": "^2.0.4",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-imagemin": "^2.3.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
     "imagemin-pngquant": "^4.2.0",
-    "gulp-uglify": "^1.4.2"
+    "lost": "^6.6.2"
   },
   "scripts": {
     "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""

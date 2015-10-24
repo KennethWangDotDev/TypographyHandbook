@@ -5,36 +5,62 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
 	imageMin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
-	prefix = require('gulp-autoprefixer');
+	autoprefixer = require('gulp-autoprefixer'),
+    postcss = require('gulp-postcss'),
+    sourcemaps = require('gulp-sourcemaps'),
+    lost = require('lost');
+
+//Declaring paths
+var paths = {
+    cssSource: '_src/_stylesheets/',
+    cssDestination: 'assets/stylesheets/',
+    jsSource: '_src/_js/',
+    jsDestination: 'assets/js/',
+    imageSource: '_src/_images/',
+    imageDestination: 'assets/images'
+};
 
 // Compresses JS
 gulp.task('uglify', function(){
-	gulp.src('_src/_js/**/*.js')
+	gulp.src(paths.jsSource + '**/*.js')
 	.pipe(plumber())
+    .pipe(sourcemaps.init())
 	.pipe(uglify())
-	.pipe(gulp.dest('assets/js'))
+    .pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest(paths.jsDestination))
 	.pipe(browserSync.stream());
 });
 
 // Compresses Image
 gulp.task('imagemin', function(){
-	gulp.src('_src/_images/**/*')
+	gulp.src(paths.imageSource + '**/*')
 		.pipe(imageMin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-		.pipe(gulp.dest('assets/images'));
+		.pipe(gulp.dest(paths.imageDestination));
 });
 
 // Processes Sass
+// Autoprefixes and integrates Lost
 gulp.task('sass', function(){
-  gulp.src('_src/_stylesheets/**/*.scss')
+  gulp.src(paths.cssSource + '**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(plumber())
-    .pipe(prefix('last 2 versions'))
+    .pipe(plumber({
+      errorHandler: function (err) {
+        gutil.beep();
+        console.log(err);
+      }
+    }))
+    .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(gulp.dest('assets/stylesheets'))
+    .pipe(postcss([
+      lost()
+    ]))
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.cssDestination))
     .pipe(browserSync.stream());
 });
 
@@ -48,8 +74,8 @@ gulp.task('browsersync', ['sass', 'uglify'], function() {
 	    browser: "google chrome",
 	});
 
-    gulp.watch("src/_stylesheets/**/*.scss", ['sass']);
-    gulp.watch("src/_js/**/*.js", ['uglify']);
+    gulp.watch(paths.cssSource + "**/*.scss", ['sass']);
+    gulp.watch(paths.jsSource + "**/*.js", ['uglify']);
     gulp.watch("*.html").on('change', browserSync.reload);
 });
 
