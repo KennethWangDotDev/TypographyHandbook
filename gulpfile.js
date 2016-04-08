@@ -1,83 +1,78 @@
 var gulp = require('gulp'),
-	uglify = require('gulp-uglify'),
-	sass = require('gulp-sass'),
-	plumber = require('gulp-plumber'),
-	browserSync = require('browser-sync').create(),
-	imageMin = require('gulp-imagemin'),
-	pngquant = require('imagemin-pngquant'),
-	autoprefixer = require('gulp-autoprefixer'),
-    postcss = require('gulp-postcss'),
-    sourcemaps = require('gulp-sourcemaps'),
-    lost = require('lost');
+    plumber = require('gulp-plumber'),
+    sass = require('gulp-sass'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    browserSync = require('browser-sync'),
+    autoprefixer = require('gulp-autoprefixer'),
+    uglify = require('gulp-uglify'),
+    header  = require('gulp-header'),
+    rename = require('gulp-rename'),
+    cssnano = require('gulp-cssnano'),
+    nunjucksRender = require('gulp-nunjucks-render'),
+    package = require('./package.json');
 
-//Declaring paths
-var paths = {
-    cssSource: '_src/_stylesheets/',
-    cssDestination: 'assets/stylesheets/',
-    jsSource: '_src/_js/',
-    jsDestination: 'assets/js/',
-    imageSource: '_src/_images/',
-    imageDestination: 'assets/images'
-};
 
-// Compresses JS
-gulp.task('uglify', function(){
-	gulp.src(paths.jsSource + '**/*.js')
-	.pipe(plumber())
+var banner = [
+  '/*!\n' +
+  ' * View full source here:\n' +
+  ' * <%= package.homepage %>\n' +
+  ' * @author <%= package.author %>\n' +
+  ' * @version <%= package.version %>\n' +
+  ' * Copyright ' + new Date().getFullYear() + '. <%= package.license %> licensed.\n' +
+  ' */',
+  '\n'
+].join('');
+
+gulp.task('css', function () {
+  gulp.src('assets/scss/**/*.scss')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
-	.pipe(uglify())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer('last 4 version'))
+    .pipe(cssnano())
+    .pipe(rename({ suffix: '.min' }))
     .pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest(paths.jsDestination))
-	.pipe(browserSync.stream());
+    .pipe(header(banner, { package : package }))
+    .pipe(gulp.dest('build/assets/css'))
+    .pipe(browserSync.reload({stream:true}));
 });
 
-// Compresses Image
-gulp.task('imagemin', function(){
-	gulp.src(paths.imageSource + '**/*')
-		.pipe(imageMin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
-        }))
-		.pipe(gulp.dest(paths.imageDestination));
+gulp.task('js',function(){
+  gulp.src('assets/js/**/*.js')
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('./'))
+    .pipe(header(banner, { package : package }))
+    .pipe(gulp.dest('build/assets/js'))
+    .pipe(browserSync.reload({stream:true, once: true}));
 });
 
-// Processes Sass
-// Autoprefixes and integrates Lost
-gulp.task('sass', function(){
-  gulp.src(paths.cssSource + '**/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(plumber({
-      errorHandler: function (err) {
-        gutil.beep();
-        console.log(err);
-      }
+gulp.task('nunjucks', function() {
+   gulp.src(['./**/*.html', '!./build{,/**/*}', '!./node_modules{,/**/*}'])
+    .pipe(nunjucksRender({
+      path: ['_templates']
     }))
-    .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(postcss([
-      lost()
-    ]))
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(paths.cssDestination))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('build'))
+    .pipe(browserSync.reload({stream:true, once: true}));
 });
 
-// Browser Sync
-gulp.task('browsersync', ['sass', 'uglify'], function() {
-
-    browserSync.init({
-    	server: {
-            baseDir: "./"
-        },
-	    browser: "google chrome",
-	});
-
-    gulp.watch(paths.cssSource + "**/*.scss", ['sass']);
-    gulp.watch(paths.jsSource + "**/*.js", ['uglify']);
-    gulp.watch("*.html").on('change', browserSync.reload);
+gulp.task('browser-sync', function() {
+    browserSync.init(null, {
+        server: {
+            baseDir: "build"
+        }
+    });
 });
 
+gulp.task('bs-reload', function () {
+    browserSync.reload();
+});
 
-gulp.task('default', ['browsersync']);
+gulp.task('default', ['css', 'js', 'nunjucks', 'browser-sync'], function () {
+    gulp.watch("assets/scss/**/*.scss", ['css']);
+    gulp.watch("assets/js/**/*.js", ['js']);
+    gulp.watch(['./**/*.+(html|nunjucks)', '!./build{,/**/*}', '!./node_modules{,/**/*}'], ['nunjucks']);
+
+});

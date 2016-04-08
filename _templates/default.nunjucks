@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/main.min.css">
+    <!--[if lt IE 9]>
+      <script src="assets/js/polyfill/html5-shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  {% block content %} {% endblock %}
+
+    <!--[if lt IE 9]>
+      <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+      <script src="assets/js/polyfill/ie-love.js"></script>
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+      <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!--<![endif]-->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

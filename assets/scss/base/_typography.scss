@@ -1,0 +1,37 @@
+// -----------------------------------------------------------------------------
+// This file contains everything related to typography.
+// -----------------------------------------------------------------------------
+
+$line-height: 1.4;
+$whitespace: .5 * $line-height;
+
+html {
+  font-size: 100%;
+}
+
+body {
+  line-height: $line-height;
+}
+
+//Modular scale
+//http://type-scale.com/?size=16&scale=1.333&text=A%20Visual%20Type%20Scale&webfont=Libre+Baskerville&font-family=%27Libre%20Baskerville%27,%20serif&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=%23333
+
+h1 {font-size: 3.157em;}
+h2 {font-size: 2.369em;}
+h3 {font-size: 1.777em;}
+h4 {font-size: 1.333em;}
+p {font-size: 1em;}
+small {font-size: .75em;}
+
+h1,
+h2 {
+  margin-bottom: $whitespace * 2;
+}
+
+h3,
+h4,
+h5,
+p,
+small {
+  margin-bottom: $whitespace;
+}
