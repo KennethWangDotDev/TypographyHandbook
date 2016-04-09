@@ -5,22 +5,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/main.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <!--[if lt IE 9]>
       <script src="assets/js/polyfill/html5-shiv.js"></script>
     <![endif]-->
   </head>
   <body>
 
-   
-
-<nav>
-  <a href="#">Home</a>
-  <a href="#">About</a>
-  <a href="#">Contact</a>
-</nav>
-<h1>This is the index page</h1>
-
+  {% include "partials/navigation.nunjucks" %}
+  {% block content %} {% endblock %}
 
     <!--[if lt IE 9]>
       <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -29,6 +22,6 @@
     <!--[if gt IE 8]><!-->
       <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!--<![endif]-->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/merged.js"></script>
   </body>
 </html>

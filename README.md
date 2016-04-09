@@ -1,48 +1,52 @@
-My personal starter kit that I use for my front-end web projects. This starter kit combines a lightweight HTML5 Boilerplate with a Sass boilerplate. It also features a Gulp file to assist with workflow.
+My personal starter kit that I use for my front-end web projects. This starter kit combines a lightweight HTML5 Boilerplate an extremely powerful Gulpfile.
+
+## Installation
+
+```bash
+git clone https://github.com/kennethwang14/KennethStarterKit newproject
+cd newproject
+npm install
+gulp build
+gulp
+```
 
 ## Boy
 
 [Boy](https://github.com/corysimmons/boy) is a lightweight, up-to-date version of HTML5 Boilerplate with conditionally loaded polyfills and a nice general reset for amazing CSS3 support back to IE6.
 
-- [HTML5 Boilerplate](https://html5boilerplate.com/)
-- [Modernizr](http://modernizr.com/)
-- Conditionally loaded [Selectivizr](http://selectivizr.com/) for IE6-8 CSS3 selectors
-- Conditionally loaded [Respond](https://github.com/scottjehl/Respond) for IE6-8 media queries
-- Conditionally loaded [calc() Polyfill](https://github.com/closingtag/calc-polyfill) for IE8 `calc()` usage
-- Conditionally loaded CDN and local jQuery
-- Reset:
-  - [Normalize.css](https://necolas.github.io/normalize.css/)
-  - Helper [clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) class (`.cf`)
-  - `box-sizing` [polyfill](https://github.com/Schepp/box-sizing-polyfill) for IE6-7 applied to all elements IE7 and below
-  - Apply `box-sizing: border-box` to everything
-  - Remove all `margin` and `padding`
-  - Force vertical scrollbar to prevent [page bounce](https://css-tricks.com/eliminate-jumps-in-horizontal-centering-by-forcing-a-scroll-bar/)
-  - `max-width: 100%` to make a plethora of [HTML elements](https://github.com/corysimmons/boy/blob/master/css/reset.css#L35) responsive [by default](http://unstoppablerobotninja.com/entry/fluid-images/)
-  - Generic styling for IE9 and below browser warning
-
-
-## Sass Boilerplate
-
-[Sass Boilerplate](https://github.com/HugoGiraudel/sass-boilerplate) uses the 7-1 architecture pattern and sticks to the Sass Guidelines writing conventions.
-
-Each Sass stylesheets folder has its own README.md file to explain the purpose and add extra information. Be sure to browse the repository to see how it works.
+- A lightweight/2-space batch of [HTML5 Boilerplate](https://html5boilerplate.com) features
+  - [index.html](index.html) (with all the fluff removed)
+  - [.editorconfig](.editorconfig) (modified to 2 spaces)
+  - [.htaccess](.htaccess)
+  - [crossdomain.xml](crossdomain.xml)
+  - Harsher outdated browser warning (warns on IE9 instead of IE8)
+- Minified and sourcemapped :rage3: [reeeset](https://github.com/corysimmons/reeeset) (opinionated [Normalize.css](https://necolas.github.io/normalize.css) for the real world)
+- Polyfills for IE8 and below a la :heart: [ie-love](https://github.com/corysimmons/ie-love)
+  - Conditionally loaded so only IE8 and below users will have to download it (even though it's only 25kb uglified)
+  - [html5shiv](https://github.com/aFarkas/html5shiv) (in the right place)
+  - [calc-polyfill](https://github.com/closingtag/calc-polyfill)
+  - [jQuery 1.x.x](https://jquery.com/download/)
+  - [Selectivizr 2](https://github.com/corysimmons/selectivizr2)
+  - [Respond.js](https://github.com/scottjehl/Respond)
+- Empty/valid package.json for quick `npm install --save-dev`s
+- `.gitignore` for Node and Bower
 
 ## Gulp
 
-This Gulpfile was designed to be lightweight, and only contains essentials.
-
-```bash
-git clone https://github.com/kennethwang14/KennethStarterKit KennethStarterKit
-cd KennethStarterKit
-npm install
-npm run gulp
-```
+A powerful, custom Gulpfile.
 
 What it does:
--  Automatically compiles and minifies Sass
-    -  Autoprefixer support
-- Minifies JS
-- SourceMap support for CSS and JS changes
-- Compresses images with image-min and pngquant
-- BrowserSync for automatically refreshing pages, and synced browsers across all devices
-- [Lost Grid](https://github.com/corysimmons/lost) via PostCSS
+-  Automatically compiles, minifies Sass with Autoprefixer and SourceMap support
+-  Minifies JavaScript files
+-  Automatically appends `.min` to all miniifed files
+-  In addition, a link to the source is provided in all minified files
+-  BrowserSync for automatically refreshing pages, and synced browsers across all devices
+-  Nunjucks for templating
+
+## File Structure
+
+Source files are located in `app`. Build files are located in `dist`. Nunjucks template files are in `app/templates`.
+
+## Sass Architecture
+
+My opinionated Sass architecture, largely inspired by Hugo Giraudel's 7-1 [Sass Boilerplate](https://github.com/HugoGiraudel/sass-boilerplate). My version aims for simplicity and comes with useful initial CSS styling.
