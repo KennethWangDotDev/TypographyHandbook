@@ -58,19 +58,15 @@ gulp.task('css', function () {
     .pipe(gulp.dest('dist/assets/css'));
 });
 
-gulp.task('uncss', function () {
+gulp.task('css-build', function () {
   gulp.src('app/assets/scss/**/*.scss')
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
-    .pipe(uncss({
-            html: ['dist/**/*.html']
-     }))
     .pipe(postcss([
       lost(),
       autoprefixer()
     ]))
     .pipe(cssnano())
-    .pipe(sourcemaps.write())
     .pipe(header(banner, { package : package }))
     .pipe(gulp.dest('dist/assets/css'));
 });
@@ -157,8 +153,9 @@ gulp.task('default', function(callback) {
 
 gulp.task('build', function (callback) {
   runSequence('clean', 'copy',
-    ['images', 'uncss', 'js'],
+    ['images', 'js'],
     'html',
+    'css-build',
     callback
   )
 });
