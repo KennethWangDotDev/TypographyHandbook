@@ -1,0 +1,37 @@
+<!-- 
+ - View uncompiled source here:
+ - git+https://github.com/kennethwang14/KennethStarterKit.git
+ -->
+
+<section class=chapter id=using-web-fonts><h2>Using Web Fonts</h2><p>To declare custom web fonts, use the following syntax:</p><pre><code class=css>@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/HelveticaNeue-Light.eot');
+  src: url('/assets/fonts/HelveticaNeue-Light.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/HelveticaNeue-Light.woff2') format('woff2'),
+    url('/assets/fonts/HelveticaNeue-Light.woff') format('woff'),
+    url('/assets/fonts/HelveticaNeue-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/HelveticaNeue-Bold.eot');
+  src: url('/assets/fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+    url('/assets/fonts/HelveticaNeue-Bold.woff') format('woff'),
+    url('/assets/fonts/HelveticaNeue-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/HelveticaNeue.eot');
+  src: url('/assets/fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/HelveticaNeue.woff2') format('woff2'),
+    url('/assets/fonts/HelveticaNeue.woff') format('woff'),
+    url('/assets/fonts/HelveticaNeue.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}</code></pre><ul><li>It is recommended to use all of the listed formats above for maximum compatibility. Otherwise, simply using woff2 and woff will support most modern browsers.</li><li>You must have a font file for each listed format. Use <a href=http://transfonter.org/ >Transfonter</a> or <a href=https://www.fontsquirrel.com/tools/webfont-generator>FontSquirrel’s Web Font Generator</a> to generate all file formats from a single one.</li><li>Compress your fonts when possible. <a href=http://www.phpied.com/gzip-your-font-face-files/ >See here</a> for more information.</li><li>Combine multiple type-families (light, regular, semibold, bold, etc) into one <code>font-family</code>, instead of having a different <code>font-family</code> name for each type-family.</li></ul><p>Alternatively, you can also import fonts using an online web font service, such as <a href=https://www.google.com/fonts>Google Fonts</a> or <a href=https://typekit.com/fonts>Typekit</a>.</p><h4 class=further-readings>Further Readings:</h4><ul class=further-readings__list><li><a href=http://blog.fontspring.com/2011/02/further-hardening-of-the-bulletproof-syntax/ >Further Hardening Of The Bulletproof Syntax</a></li><li><a href=https://www.fontsquirrel.com/blog/2010/12/how-to-use-the-generator>FontSquirrel: How To Use The Generator</a></li></ul></section>

@@ -1,0 +1,39 @@
+<section class="chapter" id="relative-units">
+
+<h2>Relative Units</h2>
+
+<p>Use relative units whenever possible.</p>
+
+<pre><code>html { font-size: 100% }
+p { font-size: 1em }
+
+@media (min-width: 64em) {
+  html {
+    font-size: 112.5%;
+  }
+}</code></pre>
+
+<ul>
+  <li><code>font-size: 100%</code> listens to the browser’s font size settings instead of overwriting it. By default in most browsers, this would place <code>1em</code> at <code>16px</code>.</li>
+  <li>Changing the value of the <code>font-size</code> of the <code>html</code> will also affect every <code>em</code> and <code>rem</code> element. This can be useful for implementing responsive web design.</li>
+  <li>User preference is important, so do not stray too far from <code>font-size: 100%</code> and <code>1em</code>.</li>
+   <li>Use <code>rem</code> and <code>em</code> for <code>font-size</code>.</li>
+   <li>Use <code>rem</code>, <code>em</code>, or <code>%</code> for element positioning (<code>margin</code>, <code>padding</code>, etc).</li>
+   <li>Use <code>em</code> for media query dimensions.</li>
+   <li>For large headings or when text is grouped with an image, use <a href="http://fittextjs.com/">FitText</a> to achieve scalable headlines. Stray away from <code>vw</code> and <code>vh</code> due to incomplete support, difficulty in precise configuration, and that it does not listen to browser font or zoom settings.</li>
+ </ul>
+
+
+
+
+<h4 class="further-readings">Further Readings:</h4>
+<ul class="further-readings__list">
+    <li><a href="http://blog.typekit.com/2011/11/09/type-study-sizing-the-legible-letter/">Type Study: Sizing The Legible Letter</a></li>
+    <li><a href="http://webdesignerwall.com/tutorials/5-useful-css-tricks-for-responsive-design">5 Useful CSS Tricks for Responsive Design</a></li>
+    <li><a href="http://zellwk.com/blog/rem-vs-em/">REM vs EM - The Great Debate </a></li>
+    <li><a href="http://zellwk.com/blog/media-query-units/">PX, EM or REM Media Queries?</a></li>
+</ul>
+
+
+
+</section>

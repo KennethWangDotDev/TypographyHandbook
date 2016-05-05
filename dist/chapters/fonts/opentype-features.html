@@ -1,0 +1,13 @@
+<!-- 
+ - View uncompiled source here:
+ - git+https://github.com/kennethwang14/KennethStarterKit.git
+ -->
+
+<section class=chapter id=opentype-features><h2>OpenType Features</h2><p>OpenType features can be thought of as typographic options for the font. They can be used to enhance the legibility and appearance of text.</p><pre><code>p {
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "alt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+}</code></pre><ol><li>OpenType features are built in the font. This means that different features will be available to different fonts. Check which features are availabe to the fonts that you are using.</li><li>Use <code>font-feature-settings</code> to enable OpenType features. Use the necessary prefixes too as support is poor without them.</li><li>Kerning <code>kern</code>, ligatures <code>liga</code>, contextual ligatures <code>clig</code>, and contextual alternatives <code>calt</code> should always be enabled for all texts.</li></ol><h4 class=further-readings>Further Readings:</h4><ul class=further-readings__list><li><a href=http://practice.typekit.com/lesson/caring-about-opentype-features/ >Caring About OpenType Features</a></li><li><a href=https://medium.com/designing-medium/death-to-typewriters-9b7712847639>Death To Typewriters</a></li><li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en#optimizing-loading-and-rendering">Web Font Optimization</a></li></ul></section>

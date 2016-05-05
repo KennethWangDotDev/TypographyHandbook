@@ -87,7 +87,7 @@ gulp.task('js',function(){
 gulp.task('html', function() {
    gulp.src(['app/**/*.html', 'app/**/*.nunjucks'])
     .pipe(nunjucksRender({
-      path: ['app/templates']
+      path: ['app/chapters']
     }))
     .pipe(htmlmin({
       removeComments: true,
@@ -116,7 +116,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('copy', function() {
-   gulp.src(['app/*.*', 'app/.htaccess', '!app/**/*.html'])
+   gulp.src(['app/**', '!app/chapters', '!app/chapters/**', 'app/.htaccess'])
     .pipe(gulp.dest('dist'))
 });
 
@@ -143,6 +143,10 @@ gulp.task('watch', function() {
     gulp.watch("app/**/*.+(html|nunjucks)", ['html']).on('change', function(evt) {
     	browserSync.reload();
     });
+
+    gulp.watch("app/**/*.+(png|jpg|jpeg|gif)", ['images']).on('change', function(evt) {
+      browserSync.reload();
+    });
 });
 
 gulp.task('default', function(callback) {
@@ -152,8 +156,8 @@ gulp.task('default', function(callback) {
 });
 
 gulp.task('build', function (callback) {
-  runSequence('clean', 
-    ['copy', 'images', 'uncss', 'js', 'html'],
+  runSequence('clean', 'copy',
+    ['images', 'uncss', 'js', 'html'],
     callback
   )
 });

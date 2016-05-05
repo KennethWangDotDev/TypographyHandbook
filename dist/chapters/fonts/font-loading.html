@@ -1,0 +1,58 @@
+<!-- 
+ - View uncompiled source here:
+ - git+https://github.com/kennethwang14/KennethStarterKit.git
+ -->
+
+<section class=chapter id=font-loading><h2>Font Loading</h2><p>Before custom fonts are displayed, they need to be loaded first. There are three possible scenarios for font loading:</p><ol><li>The font family is not recognised and a fallback font is applied.</li><li>The font family is recognised but not yet loaded, and will be applied when it has finished downloading.</li><li>The font family is recognised and has already been loaded and will be applied immediately.</li></ol><p>Scenario 1 only happens when you try to use a nonexisting font, or a declaration with a bad <code>src</code>. This can and should be avoided entirely. Jumping to Scenario 3, it is the best case scenario and can usually be achieved through proper font caching. Scenario 2 is the scenario that involves font loading. Font loading is mostly unavoidable (at least for the first request instance). There are several ways to deal with it:</p><p><strong>1.</strong> Flash of Unstyled Text (<abbr>FOUT</abbr>). A <abbr>FOUT</abbr> is an instance where where a web page uses default and fallback fonts before switching to the proper web font. It happens because font requests do not happen until both HTML and CSS are downloaded. This means that there is a period of time where HTML is displayed before fonts are fully downloaded. <strong>The <abbr>FOUT</abbr> is the optimal approach for most websites</strong>, mainly because the alternatives are a lot worse. When done correctly, a <abbr>FOUT</abbr> is hardly noticeable.</p><p><strong>2.</strong><em> Flash of Invisible Text</em> (<abbr>FOIT</abbr>). A number of years ago, some modern browsers started to implement a new technique of dealing with font loading &mdash; the <abbr>FOIT</abbr>. A <abbr>FOIT</abbr> is an instance when the browser detects that a font is currently loading, and hides the text until font loading is complete. There is usually a maximum wait time before the browser switches to a fallback. <strong>This approach should always be avoided.</strong> Although it might sound good in theory, it can provide an awful user experience for people with slower internet. It can cause a <abbr>FOUT</abbr> after the initial <abbr>FOIT</abbr>, and at worst can even lead to permanent invisible content.</p><p><strong>3.</strong><em> The Whitescreen Approach</em>. The entire web page does not display until fonts are loaded. Alternatively, a loading progress bar can be displayed. <strong>This approach is ONLY recommended if a <abbr>FOUT</abbr> is going to heavily detract from the user experience of your audience.</strong> This is usually the case if the web page heavily relies on very distinct fonts in large sizes. Otherwise, a <abbr>FOUT</abbr> is preferred because content is king. This approach is similar to <abbr>FOIT</abbr>, but superior because you control when to start showing content instead of the browser. In <abbr>FOIT</abbr>, invisible text might also confuse the audience, whereas a completely white screen (or a progress bar) is an obvious sign of loading.</p><p>Whether you plan on going with the <abbr>FOUT</abbr> approach or the Whitescreen approach, you will want to use a JavaScript library called <a href=https://github.com/typekit/webfontloader>Web Font Loader</a>. Web Font Loader gives you added control over @font-face, and adds events for you can control the font loading experience.</p><p><em>Note: There is a W3C Font Loading API that achieves similar goals, but its <a href="http://caniuse.com/#search=font%20loading">support is still poor.</a></em></p><h3>FOUT Approach</h3><p>Here is an example of using Web Font Loader with the <abbr>FOUT</abbr> approach:</p><pre><code>&lt;script type="text/javascript"&gt;
+  WebFontConfig = {
+    google: { families: [ 'Lora:400,700,400italic,700italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+&lt;/script&gt;
+
+&lt;noscript&gt;
+  &lt;link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'&gt;
+&lt;/noscript&gt;
+
+&lt;style&gt;
+  p {
+    /* use fallback fonts */
+  }
+
+  .wf-active p {
+    /* styles for custom fonts */
+  }
+&lt;/style&gt;</code></pre><ul><li>It is important to use Web Font Loader asynchronously so it does not delay the render of the rest of the page</li><li>Style your fallback fonts to appear as close as possible to your actual fonts to minimize the effects of the <abbr>FOUT</abbr>. See <a href=http://www.ampsoft.net/webdesign-l/WindowsMacFonts.html>here</a> for a list of usable fallback fonts. Use <a href=http://ffffallback.com/ >this tool</a> to easily compare your fallback font to your custom font.</li></ul><h3>Whitescreen Approach</h3><p>Here is an example of using Web Font Loader with the whitescreen approach:</p><pre><code>&lt;script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  WebFont.load({
+    google: {
+      families: ['Raleway', 'Oswald']
+    }
+  });
+&lt;/script&gt;
+
+&lt;noscript&gt;
+  &lt;link href='https://fonts.googleapis.com/css?family=Raleway|Oswald' rel='stylesheet' type='text/css'&gt;
+&lt;/noscript&gt;
+
+&lt;style&gt;
+  .wf-loading {
+    display: none;
+  }
+
+  .wf-active p {
+    /* styles for custom fonts */
+  }
+
+  p {
+    /* use fallback fonts */
+  }
+&lt;/style&gt;</code></pre><ul><li>In this case, the fallback does not need to appear similar to your custom font since there is no <abbr>FOUT</abbr>. Style the fallback as you see fit.</li><li>Use <a href=https://github.com/HubSpot/pace>Pace</a> if you want to include a progress bar instead of a white screen.</li></ul><h4 class=further-readings>Further Readings:</h4><ul class=further-readings__list><li><a href=http://blog.typekit.com/2011/03/24/type-study-choosing-fallback-fonts/ >Type Study: Choosing Fallback Fonts</a></li><li><a href="https://css-tricks.com/<abbr>FOUT</abbr>-<abbr>FOIT</abbr>-foft/">FOUT, FOIT, FOFT</a></li><li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en#optimizing-loading-and-rendering">Web Font Optimization</a></li></ul></section>

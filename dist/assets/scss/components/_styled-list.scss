@@ -1,0 +1,27 @@
+/* 
+ * See here for reference:
+ * http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/
+*/
+
+@mixin styled-list($name, $counter: decimal, $margin: 0.5rem) {
+
+	& {
+		counter-reset:$name;
+		position: relative;
+		margin-left: $margin;
+	}
+	& > li {
+		list-style:none;
+	}
+	& > li:before {
+		content:counter($name, $counter);
+		counter-increment:$name;
+		opacity: 0.33;
+		font-family: $body-font;
+		text-align:center;
+		display: inline-block;
+  	width: 1em;
+  	position: absolute;
+  	left: -1 * $margin;
+	}
+}
