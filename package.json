@@ -1,7 +1,7 @@
 {
-  "name": "kennethstarterkit",
-  "version": "2.0.0",
-  "description": "Lightweight Sass + Gulp Boilerplate",
+  "name": "typographyhandbook",
+  "version": "1.0.0",
+  "description": "A concise, referential web book on best typographic practices.",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kennethwang14/KennethStarterKit.git"
+    "url": "git+https://github.com/kennethwang14/TypographyHandbook.git"
   },
   "author": "Kenneth Wang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kennethwang14/KennethStarterKit/issues"
+    "url": "https://github.com/kennethwang14/TypographyHandbook/issues"
   },
-  "homepage": "https://github.com/kennethwang14/KennethStarterKit#readme"
+  "homepage": "https://github.com/kennethwang14/TypographyHandbook#readme"
 }
