@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "A concise, referential web book on best typographic practices.",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "imagemin-jpegoptim": "^4.1.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-pngquant": "^5.0.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.11.2",
@@ -22,6 +26,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-uncss": "^1.0.5",
+    "imagemin-pngquant": "^4.2.2",
     "lost": "^6.7.2",
     "run-sequence": "^1.1.5"
   },

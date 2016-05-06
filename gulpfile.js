@@ -20,6 +20,8 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
 
     imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    jpegoptim = require('imagemin-jpegoptim');
     cache = require('gulp-cache'),
 
     runSequence = require('run-sequence'),
@@ -101,9 +103,19 @@ gulp.task('html', function() {
 
 gulp.task('images', function() {
   return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
-    .pipe(cache(imagemin({
-      interlaced: true,
-    })))
+    .pipe(imagemin({
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant({quality: "80"}), jpegoptim({progressive: true, max: 90})]
+    }))
+    .pipe(gulp.dest('dist/assets/images'))
+});
+
+gulp.task('imagemin', function() {
+  return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
+    .pipe(imagemin({
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant({quality: "80"}), jpegoptim({progressive: true, max: 90})]
+    }))
     .pipe(gulp.dest('dist/assets/images'))
 });
 
@@ -153,7 +165,7 @@ gulp.task('default', function(callback) {
 
 gulp.task('build', function (callback) {
   runSequence('clean', 'copy',
-    ['images', 'js'],
+    ['imagemin', 'js'],
     'html',
     'css-build',
     callback
