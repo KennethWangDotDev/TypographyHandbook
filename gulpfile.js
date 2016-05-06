@@ -114,7 +114,7 @@ gulp.task('imagemin', function() {
   return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(imagemin({
       svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant({quality: "80"}), jpegoptim({progressive: true, max: 90})]
+      use: [pngquant({quality: "80", floyd: 1, speed: 1}), jpegoptim({progressive: true, max: 90})]
     }))
     .pipe(gulp.dest('dist/assets/images'))
 });
