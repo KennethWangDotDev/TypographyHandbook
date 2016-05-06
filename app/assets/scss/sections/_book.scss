@@ -1,5 +1,11 @@
 .page {
 	padding: ($whitespace * 7) 0 ($whitespace * 3) 0;
+  @media (max-width: $breakpoint-tablet) {
+    padding: ($whitespace * 4) 0 ($whitespace * 1) 0;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    padding: ($whitespace * 2) 0 ($whitespace * 1) 0;
+  }
 }
 
 .book-title {
@@ -22,12 +28,24 @@
   text-align: center;
   opacity: 0.66;
   margin-bottom: $whitespace * 5;
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: $whitespace * 3;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: $whitespace * 2;
+  }
 }
 
 .toc {
 	@include container;
 	text-align: center;
 	margin-bottom: $whitespace * 8;
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: $whitespace * 5;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: $whitespace * 3;
+  }
 	.title {
 		@include size(h3);
 		opacity: 0.9;
@@ -83,9 +101,21 @@
 	@include container;
   .part {
     margin-bottom: $whitespace * 8;
+    @media (max-width: $breakpoint-tablet) {
+    margin-bottom: $whitespace * 5;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: $whitespace * 3;
+  }
   }
 	.chapter {
 		margin-bottom: $whitespace * 5;
+    @media (max-width: $breakpoint-tablet) {
+      margin-bottom: $whitespace * 3;
+    }
+    @media (max-width: $breakpoint-tablet) {
+      margin-bottom: $whitespace * 2;
+    }
 	}
 }
 
