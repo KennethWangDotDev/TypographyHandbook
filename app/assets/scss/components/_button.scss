@@ -1,0 +1,50 @@
+.github {
+  border: 0;
+  height: 2rem;
+  width: 10rem;
+  opacity: 0.85;
+  display: block;
+}
+
+.github:hover {
+  opacity: 1;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 4rem;
+  right: 6rem;
+  z-index: 9999;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  line-height: 60px;
+  background: color($grey, 100);
+  color: color($grey, 600);
+  cursor: pointer;
+  border: 1px solid color($grey, 200);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
+  font-size: 1.5rem;
+  @media (max-width: ($breakpoint-tablet + 25em)) {
+    right: 3rem;
+    bottom: 3rem;
+  }
+  @media (max-width: ($breakpoint-tablet)) {
+    right: 1rem;
+    bottom: 2rem;
+  }
+  @media (max-width: ($breakpoint-tablet - 15em)) {
+    display: none;
+  }
+}
+
+.back-to-top:hover {
+  background: #e9ebec;
+}
+
+.back-to-top.show {
+  opacity: 1;
+}
