@@ -69,7 +69,7 @@ $breakpoint-tablet: 75em;
 $breakpoint-mobile: 45em;
 
 @mixin size($level) {
-  font-size: map-get($type-scale, $level);
+  font-size: map-get($type-scale-desktop, $level);
   @media (max-width: $breakpoint-tablet) {
      font-size: map-get($type-scale-tablet, $level);
   }
@@ -78,10 +78,10 @@ $breakpoint-mobile: 45em;
   }
 }
 
-$whitespace: $line-height * map-get($type-scale, p);
+$whitespace: $line-height * map-get($type-scale-desktop, p);
 
 @mixin margin-bottom($level) {
-  margin-bottom: $line-height * map-get($type-scale, p) * $level;
+  margin-bottom: $line-height * map-get($type-scale-desktop, p) * $level;
   @media (max-width: $breakpoint-tablet) {
      margin-bottom: $line-height * map-get($type-scale-tablet, p) * $level;
   }
