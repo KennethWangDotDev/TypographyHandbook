@@ -20,15 +20,15 @@ body {
  * http://www.modularscale.com/?1.25&em&1.33&web&text
 */
 
-$type-scale: (
-  hero: 6rem,
+$type-scale-desktop: (
+  hero: 6rem, // deviates from modular scale
   sub-hero: 5.202rem,
   h1: 3.911rem,
   h2: 2.941rem,
   h3: 2.211rem,
   h4: 1.663rem,
   p: 1.25rem,
-  small: .94rem
+  small: 1rem // deviates from modular scale
 );
 
 /* 
@@ -37,31 +37,31 @@ $type-scale: (
 */
 
 $type-scale-tablet: (
-  hero: 4.5rem,
-  sub-hero: 3.715rem,
+  hero: 4.768rem,
+  sub-hero: 3.815rem,
   h1: 3.052rem,
   h2: 2.441rem,
   h3: 1.953em,
   h4: 1.563rem,
   p: 1.25rem, 
-  small: .94rem
+  small: 1rem
 );
 
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.1&em&1.2&web&text
+ * http://www.modularscale.com/?1.1&em&1.25&web&text
 */
 
 $type-scale-mobile: (
-  hero: 3.4em,
-  sub-hero: 2.9rem,
+  hero: 4.196rem,
+  sub-hero: 3.357rem,
   h1: 2.686rem,
   h2: 2.148rem,
   h3: 1.719rem,
   h4: 1.375rem,
   p: 1.1rem,
-  small: .94rem
+  small: 0.94rem // deviates from modular scale
 );
 
 
@@ -78,8 +78,17 @@ $breakpoint-mobile: 45em;
   }
 }
 
-$whitespace: $line-height * 1.25rem;
+$whitespace: $line-height * map-get($type-scale, p);
 
+@mixin margin-bottom($level) {
+  margin-bottom: $line-height * map-get($type-scale, p) * $level;
+  @media (max-width: $breakpoint-tablet) {
+     margin-bottom: $line-height * map-get($type-scale-tablet, p) * $level;
+  }
+  @media (max-width: $breakpoint-mobile) {
+     margin-bottom: $line-height * map-get($type-scale-mobile, p) * $level;
+  }
+}
 
 h1 {@include size(h1);}
 h2 {@include size(h2);}
@@ -94,27 +103,18 @@ h2,
 h3,
 h4,
 p,
+ul,
+ol,
 small {
-  margin-bottom: $whitespace;
-  letter-spacing: -0.01em;
-}
-
-h3 {
-  letter-spacing: -0.05em;
-}
-
-abbr {
-  font-variant-caps: all-small-caps;
-  font-feature-settings: "c2sc","smcp";
-  text-decoration: none;
+  @include margin-bottom(1);
 }
 
 blockquote {
+  @include margin-bottom(1);
+  @include size(p);
   padding: 1rem 0 1rem 1.6rem;
   border-left: 0.5rem solid color($theme-color);
   margin-top: $whitespace;
-  margin-bottom: $whitespace;
-  @include size(p);
 }
 
 cite {
@@ -125,15 +125,15 @@ cite {
   display: block;
 }
 
-@mixin container {
-	max-width: 48rem;
+@mixin container($width: 48rem) {
+	max-width: $width;
   padding-left: 1rem;
   padding-right: 1rem;
   margin: $whitespace auto;
 }
 
 pre {
-  margin-bottom: $whitespace;
+  @include margin-bottom(1);
   code {
     white-space: pre;
   }
@@ -145,10 +145,3 @@ code {
   @include size(p);
   padding: 3px 6px;
 }
-
-.part {
-  a {
-    @include link-underline(white, color($theme-color), color($theme-color, 100));
-  }
-}
-
