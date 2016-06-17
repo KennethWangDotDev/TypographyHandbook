@@ -60,7 +60,12 @@
 		}
 	}
 
+	a {
+		@include link-underline(white, color($theme-color), color($theme-color, 100));
+	}
 }
+
+
 
 /* Introduction */
 

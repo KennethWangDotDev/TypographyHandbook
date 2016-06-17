@@ -16,10 +16,76 @@
   <li>The modular scale is only a <em>guideline</em> and can be thought of as just a starting point.</li>
   <li>Keep in mind that different fonts have different cap heights and x-heights, and that most modular scale tools do not account for that.</li>
   <li>In your stylesheets, provide a reference back to what modular scale you used in comments.</li>
-  <li>It is often a good idea to use different modular scales tailored for different resolutions.</li>
  </ul>
 
 
+<h3>Responsive Modular Scale</h3>
+
+<p>A single modular scale will rarely look good on all resolutions. To remedy this, different scales can be used depending on the resolution of the viewer's device.</p>
+
+<pre><code>//Sass responsive modular scale
+
+
+/* 
+ * Modular scale
+ * http://www.modularscale.com/?1.25&em&1.33&web&text
+*/
+
+$type-scale-large: (
+  h1: 3.911rem,
+  h2: 2.941rem,
+  h3: 2.211rem,
+  h4: 1.663rem,
+  p: 1.25rem
+);
+
+/* 
+ * Modular scale
+ * http://www.modularscale.com/?1.25&em&1.25&web&text
+*/
+
+$type-scale-medium: (
+  h1: 3.052rem,
+  h2: 2.441rem,
+  h3: 1.953em,
+  h4: 1.563rem,
+  p: 1.25rem,
+);
+
+
+/* 
+ * Modular scale
+ * http://www.modularscale.com/?1.1&em&1.25&web&text
+*/
+
+$type-scale-small: (
+  h1: 2.686rem,
+  h2: 2.148rem,
+  h3: 1.719rem,
+  h4: 1.375rem,
+  p: 1.1rem
+);
+
+
+$breakpoint-medium: 75em;
+$breakpoint-small: 45em;
+
+@mixin size($level) {
+  font-size: map-get($type-scale-large, $level);
+  @media (max-width: $breakpoint-medium) {
+     font-size: map-get($type-scale-medium, $level);
+  }
+  @media (max-width: $breakpoint-small) {
+     font-size: map-get($type-scale-small, $level);
+  }
+}
+
+// Example
+
+.title {
+  @include size(h1);
+}
+</code></pre>
 
 
 <h4 class="further-readings">Further Readings:</h4>
