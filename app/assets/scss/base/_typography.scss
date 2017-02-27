@@ -142,6 +142,6 @@ pre {
 code {
   background: #eeeeee;
   white-space: nowrap;
-  @include size(p);
+  @include size(small);
   padding: 3px 6px;
 }
