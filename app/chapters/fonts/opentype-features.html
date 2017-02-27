@@ -8,15 +8,12 @@
 <pre><code>p {
   font-kerning: normal;
   font-variant-ligatures: common-ligatures contextual;
-  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-  -ms-font-feature-settings: "kern", "liga", "clig", "alt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
 }</code></pre>
 
 <ol>
   <li>OpenType features are built in the font. This means that different features will be available to different fonts. Check which features are availabe to the fonts that you are using.</li>
-  <li>Use <code>font-feature-settings</code> to enable OpenType features. Use the necessary prefixes too as support is poor without them.</li>
+  <li>Use <code>font-feature-settings</code> to enable OpenType features.</li>
   <li>Kerning <code>kern</code>, ligatures <code>liga</code>, contextual ligatures <code>clig</code>, and contextual alternatives <code>calt</code> should always be enabled for all texts.</li>
 </ol>
 
