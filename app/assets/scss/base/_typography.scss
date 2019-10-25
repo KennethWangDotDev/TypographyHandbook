@@ -5,6 +5,40 @@
 $line-height: 1.4;
 $body-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
 
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Bold.eot');
+  src: url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Bold.woff2') format('woff2'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Bold.woff') format('woff'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Regular.eot');
+  src: url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Regular.woff2') format('woff2'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Regular.woff') format('woff'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-RegularIt.eot');
+  src: url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-RegularIt.eot?#iefix') format('embedded-opentype'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-RegularIt.woff2') format('woff2'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-RegularIt.woff') format('woff'),
+    url('https://assets.kennethwang.dev/fonts/Proxima%20Nova/subset-ProximaNova-RegularIt.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+
 html {
   font-size: 100%;
 }

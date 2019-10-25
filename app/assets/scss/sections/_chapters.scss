@@ -47,7 +47,8 @@
 	.further-readings {
 		margin-top: $whitespace * 2;
 		margin-bottom: $whitespace * 0.5;
-		color: color($theme-color);
+		color: $body-color;
+		opacity: 0.75;
 		text-transform: uppercase;
 	  letter-spacing: 0.05em;
 	}
@@ -55,9 +56,6 @@
 	.further-readings__list {
 		max-width: 100%;
 		@include styled-list(further-readings, disc, 1.5rem);
-		a {
-			@include link-underline(white, $body-color, color($theme-color, 100));
-		}
 	}
 
 	a {
