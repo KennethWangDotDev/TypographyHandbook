@@ -26,40 +26,41 @@
 
 <h3>FOUT Approach</h3>
 
-<p>Here is an example of using Web Font Loader with the <abbr>FOUT</abbr> approach:</p>
+<p>The easiest way to font-load with the <abbr>FOUT</abbr> approach is by making use of the recently added <code>font-display</code> CSS property. <code>font-display</code> instructs the browser how the font should be displayed while it is in the downloading state, loading state, or ready state. The value that we want for the <abbr>FOUT</abbr> approach is <code>font-display: swap</code>. This tells the browser to render a fallback font until the main font is ready.</p>
 
-<pre><code>&lt;script type="text/javascript"&gt;
+<pre><code class="css">@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/HelveticaNeue-Light.eot');
+  font-display: swap;
+}
+</code></pre>
+
+<p>As <code>font-display</code> is still relatively new, browser support for it is limited. Check <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display#Browser_compatibility"> here</a> to see if your target browsers support it.</p>
+
+<p>A more widely-supported method of achieving <abbr>FOUT</abbr> is using JavaScript to append a CSS class once font is ready. Here is an example of this done using <a href="https://github.com/typekit/webfontloader">Web Font Loader</a>:</p>
+
+<pre><code>&lt;script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
   WebFontConfig = {
-    google: { families: [ 'Lora:400,700,400italic,700italic:latin' ] }
+    google: { families: [ 'Lora' ] }
   };
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })();
 &lt;/script&gt;
-
-&lt;noscript&gt;
-  &lt;link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'&gt;
-&lt;/noscript&gt;
 
 &lt;style&gt;
   p {
-    /* use fallback fonts */
+    font-family: "Arial";
   }
 
   .wf-active p {
-    /* styles for custom fonts */
+    font-family: "Lora, Arial";
   }
 &lt;/style&gt;</code></pre>
 
+<p>In the above code, the browser first renders paragraph texts with Arial. Meanwhile, the Web Font Loader library starts loading Lora from Google Fonts. Once it is loaded, the <code>wf-active</code> class is appended to the <code>html</code> element, and the Lora font starts to be used for paragraph texts.</p>
+
 <ul>
   <li>It is important to use Web Font Loader asynchronously so it does not delay the render of the rest of the page</li>
-  <li>Style your fallback fonts to appear as close as possible to your actual fonts to minimize the effects of the <abbr>FOUT</abbr>. See <a href="http://www.ampsoft.net/webdesign-l/WindowsMacFonts.html">here</a> for a list of usable fallback fonts. Use <a href="http://ffffallback.com/">this tool</a> to easily compare your fallback font to your custom font.</li>
+  <li>Style your fallback fonts to appear as close as possible to your actual fonts to minimize the effects of the <abbr>FOUT</abbr>. See <a href="http://www.ampsoft.net/webdesign-l/WindowsMacFonts.html">here</a> for a list of usable fallback fonts. Use <a href="https://meowni.ca/font-style-matcher/">this tool</a> to easily compare your fallback font to your custom font.</li>
 </ul>
 
 <h3>Whitescreen Approach</h3>
@@ -85,11 +86,11 @@
   }
 
   .wf-active p {
-    /* styles for custom fonts */
+    font-family: "Arial";
   }
 
   p {
-    /* use fallback fonts */
+    font-family: "Raleway, Arial";
   }
 &lt;/style&gt;</code></pre>
 
